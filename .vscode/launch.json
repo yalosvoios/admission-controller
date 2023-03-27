@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch",
+        "type": "go",
+        "request": "launch", 
+        "mode": "debug",
+        "program": "${workspaceFolder}",
+        "env": {
+          "ca_path": "./certificates/caCert.pem",
+          "cert_path": "./certificates/serverCert.pem",
+          "key_path": "./certificates/serverKey.pem",
+          "namespace": "jedox-operator",
+          "service": "jedox-admission",
+        },
+        "args": ["-v=8",],
+        "showLog": true
+      }
+    ]
+  }

@@ -1,0 +1,23 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: yalos
+webhooks:
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    caBundle: ${CACERT}
+    service:
+      name: ${CN_BASE}
+      namespace: ${NAMESPACE}
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: yalos.k8s.io
+  rules:
+    - operations: ["CREATE"]
+      apiGroups: [""]
+      apiVersions: ["v1"]
+      resources: ["pods"]
+  sideEffects: None
+  timeoutSeconds: 30

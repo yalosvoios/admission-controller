@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  caCert.pem: ${CACERT}
+  caKey.pem: ${CAKEY}
+  serverCert.pem: ${SERVERCERT}
+  serverKey.pem: ${SERVERKEY}
+kind: Secret
+metadata:
+  name: tls-certs
+  namespace: ${NAMESPACE}
+type: Opaque

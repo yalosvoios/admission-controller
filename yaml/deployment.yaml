@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admission
+  namespace: yalos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admission
+  template:
+    metadata:
+      labels:
+        app: admission
+    spec:
+      containers:
+        - name: admission
+          image: TODO!!!
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1024Mi
+            requests:
+              cpu: "0.05"
+              memory: 1024Mi
+          ports:
+          - containerPort: 8443
+          volumeMounts:
+            - name: tls-certs
+              mountPath: "/etc/tls"
+              readOnly: true          
+      volumes:
+        - name: tls-certs
+          secret:
+            secretName: tls-certs

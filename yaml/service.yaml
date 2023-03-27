@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: admission
+  namespace: yalos
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 443
+      targetPort: 8443
+  selector:
+    app: admission
+  type: ClusterIP
+  sessionAffinity: None
+  internalTrafficPolicy: Cluster
